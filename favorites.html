@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f4" />
+    <meta name="description" content="Workroom Favorites — Your saved services and freelancers, all in one place." />
+    <title>Workroom — Favorites</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="marketplace.css" />
+    <script src="marketplace.js" defer></script>
+    <script>window.__PAGE__ = 'favorites';</script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Workroom home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>workroom<span class="brand-period">.</span></span>
+        </a>
+        <div class="workspace-switcher">
+          <span class="workspace-avatar">S</span>
+          <span class="workspace-copy"><strong>Studio North</strong><small>Personal workspace</small></span>
+          <span class="switch-chevron" aria-hidden="true">⌄</span>
+        </div>
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="main-nav">
+          <a class="nav-link" href="index.html"><span class="nav-icon icon-grid" aria-hidden="true"></span>Overview</a>
+          <a class="nav-link" href="index.html#projects"><span class="nav-icon icon-folder" aria-hidden="true"></span>Projects<span class="nav-count">4</span></a>
+          <a class="nav-link" href="marketplace.html"><span class="nav-icon icon-shop" aria-hidden="true"></span>Marketplace</a>
+          <a class="nav-link active" href="favorites.html" aria-current="page"><span class="nav-icon icon-heart" aria-hidden="true"></span>Favorites<span class="nav-count" id="sidebar-fav-count">0</span></a>
+          <a class="nav-link" href="messages.html"><span class="nav-icon icon-chat" aria-hidden="true"></span>Messages<span class="unread-dot"></span></a>
+          <a class="nav-link" href="freelancer-dashboard.html"><span class="nav-icon icon-chart" aria-hidden="true"></span>My Dashboard</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="help-card"><span class="help-spark" aria-hidden="true">✳</span><strong>Need a hand?</strong><p>Our team is here when you need us.</p><a href="mailto:help@workroom.example">Visit help center <span aria-hidden="true">↗</span></a></div>
+          <button class="profile-button" type="button" aria-label="Account settings">
+            <span class="avatar avatar-you">JD</span>
+            <span class="profile-copy"><strong>Jamie Davis</strong><small>Freelancer</small></span>
+            <span class="profile-more" aria-hidden="true">•••</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><a href="index.html">Workspace</a><span class="crumb-slash">/</span><strong>Favorites</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input id="global-search" type="search" placeholder="Search marketplace…" aria-label="Search marketplace" />
+              <kbd>⌘ K</kbd>
+            </label>
+            <a class="icon-button notification-button" href="messages.html?notifications=1" aria-label="Open notifications"><span class="bell-icon" aria-hidden="true"></span><i></i></a>
+            <span class="avatar avatar-you top-avatar" aria-label="Jamie Davis">JD</span>
+          </div>
+        </header>
+
+        <div class="page-wrap" id="favorites-page">
+          <section class="page-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span>YOUR SAVED COLLECTION</p>
+              <h1>My Favorites<span class="heading-period">.</span></h1>
+              <p class="page-subtitle">Services and freelancers you've saved for later.</p>
+            </div>
+            <div class="heading-tools">
+              <a href="marketplace.html" class="button button-quiet">Browse more ↗</a>
+            </div>
+          </section>
+
+          <!-- Favorites filter tabs -->
+          <div class="favorites-tabs" role="tablist" aria-label="Filter favorites">
+            <button class="project-tab active" type="button" data-fav-filter="all" role="tab" aria-selected="true">All <span id="fav-tab-all">0</span></button>
+            <button class="project-tab" type="button" data-fav-filter="service" role="tab" aria-selected="false">Services <span id="fav-tab-service">0</span></button>
+            <button class="project-tab" type="button" data-fav-filter="freelancer" role="tab" aria-selected="false">Freelancers <span id="fav-tab-freelancer">0</span></button>
+          </div>
+
+          <!-- Favorites grid -->
+          <div class="service-grid fav-grid" id="favorites-grid" aria-live="polite" aria-label="Saved services and freelancers"></div>
+
+          <!-- Empty favorites state -->
+          <div class="empty-results fav-empty" id="favorites-empty" hidden>
+            <div class="empty-results-icon" aria-hidden="true">🤍</div>
+            <h3>No favorites saved yet</h3>
+            <p>Browse the marketplace and click the heart icon to save services and freelancers you love.</p>
+            <a href="marketplace.html" class="button button-primary">Browse Marketplace ↗</a>
+          </div>
+
+          <footer class="page-footer">
+            <span>© 2025 Workroom</span>
+            <span>Made for work that matters <span class="footer-star">✳</span></span>
+            <a href="mailto:help@workroom.example">Get support <span aria-hidden="true">↗</span></a>
+          </footer>
+        </div>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

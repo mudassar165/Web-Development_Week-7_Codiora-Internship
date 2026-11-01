@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f4" />
+    <meta name="description" content="Workroom Freelancer Dashboard — Manage your services, orders, earnings, and reviews all in one professional workspace." />
+    <title>Workroom — Freelancer Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="dashboard.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Workroom home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>workroom<span class="brand-period">.</span></span>
+        </a>
+        <div class="workspace-switcher">
+          <span class="workspace-avatar">S</span>
+          <span class="workspace-copy"><strong>Studio North</strong><small>Personal workspace</small></span>
+          <span class="switch-chevron" aria-hidden="true">⌄</span>
+        </div>
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="main-nav">
+          <a class="nav-link" href="index.html"><span class="nav-icon icon-grid" aria-hidden="true"></span>Overview</a>
+          <a class="nav-link" href="index.html#projects"><span class="nav-icon icon-folder" aria-hidden="true"></span>Projects<span class="nav-count">4</span></a>
+          <a class="nav-link" href="marketplace.html"><span class="nav-icon icon-shop" aria-hidden="true"></span>Marketplace</a>
+          <a class="nav-link" href="favorites.html"><span class="nav-icon icon-heart" aria-hidden="true"></span>Favorites</a>
+          <a class="nav-link" href="messages.html"><span class="nav-icon icon-chat" aria-hidden="true"></span>Messages<span class="unread-dot"></span></a>
+          <a class="nav-link active" href="freelancer-dashboard.html" aria-current="page"><span class="nav-icon icon-chart" aria-hidden="true"></span>My Dashboard</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="help-card"><span class="help-spark" aria-hidden="true">✳</span><strong>Need a hand?</strong><p>Our team is here when you need us.</p><a href="mailto:help@workroom.example">Visit help center <span aria-hidden="true">↗</span></a></div>
+          <button class="profile-button" type="button" aria-label="Account settings">
+            <span class="avatar avatar-you">JD</span>
+            <span class="profile-copy"><strong>Jamie Davis</strong><small>Freelancer</small></span>
+            <span class="profile-more" aria-hidden="true">•••</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><a href="index.html">Workspace</a><span class="crumb-slash">/</span><strong>Freelancer Dashboard</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input id="global-search" type="search" placeholder="Search projects…" aria-label="Search" />
+              <kbd>⌘ K</kbd>
+            </label>
+            <a class="icon-button notification-button" href="messages.html?notifications=1" aria-label="Open notifications"><span class="bell-icon" aria-hidden="true"></span><i></i></a>
+            <span class="avatar avatar-you top-avatar" aria-label="Jamie Davis">JD</span>
+          </div>
+        </header>
+
+        <div class="page-wrap dashboard-page" id="freelancer-dashboard">
+          <!-- Dashboard header -->
+          <section class="page-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span>FREELANCER WORKSPACE</p>
+              <h1>Your Dashboard<span class="heading-period">.</span></h1>
+              <p class="page-subtitle">Track your business at a glance.</p>
+            </div>
+            <div class="heading-tools">
+              <!-- Dashboard role switcher -->
+              <div class="role-switch" role="group" aria-label="Switch dashboard view">
+                <a class="role-option active" href="freelancer-dashboard.html" aria-pressed="true">Freelancer</a>
+                <a class="role-option" href="client-dashboard.html" aria-pressed="false">Client</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- KPI Stats -->
+          <section class="stats-row dash-stats" aria-label="Key performance indicators">
+            <article class="stat-item">
+              <span class="stat-label">Total Earnings</span>
+              <strong>$12,450<span class="stat-currency">.00</span></strong>
+              <span class="stat-note"><span class="trend-up">↗ 18%</span> vs. last month</span>
+            </article>
+            <article class="stat-item">
+              <span class="stat-label">Active Orders</span>
+              <strong id="dash-active-orders">03</strong>
+              <span class="stat-note"><span class="stat-bullet green-bullet"></span>In progress</span>
+            </article>
+            <article class="stat-item">
+              <span class="stat-label">Orders Completed</span>
+              <strong>24</strong>
+              <span class="stat-note">This year</span>
+            </article>
+            <article class="stat-item">
+              <span class="stat-label">Avg. Rating</span>
+              <strong>4.9 <span class="stat-currency" style="font-size:14px;color:#e0ad4d;">★</span></strong>
+              <span class="stat-note">From 18 reviews</span>
+            </article>
+          </section>
+
+          <!-- Dashboard body -->
+          <div class="dashboard-body">
+            <!-- Left column -->
+            <div class="dash-col-main">
+
+              <!-- Active Projects -->
+              <section class="dash-card" aria-labelledby="active-projects-heading">
+                <div class="dash-card-header">
+                  <h2 id="active-projects-heading">Active Projects</h2>
+                  <a href="index.html" class="text-action">View all ↗</a>
+                </div>
+                <div class="dash-card-body" id="active-projects-list">
+                  <!-- Rendered by JS -->
+                </div>
+                <div class="dash-empty" id="active-projects-empty" hidden>
+                  <span class="dash-empty-icon" aria-hidden="true">📋</span>
+                  <p>No active projects right now.</p>
+                  <a href="marketplace.html" class="button button-quiet" style="font-size:10px;min-height:30px;">Browse jobs ↗</a>
+                </div>
+              </section>
+
+              <!-- Orders -->
+              <section class="dash-card" aria-labelledby="orders-heading">
+                <div class="dash-card-header">
+                  <h2 id="orders-heading">Orders</h2>
+                  <div class="dash-tab-group" role="tablist">
+                    <button class="dash-tab active" type="button" data-order-filter="all" role="tab" aria-selected="true">All</button>
+                    <button class="dash-tab" type="button" data-order-filter="active" role="tab" aria-selected="false">Active</button>
+                    <button class="dash-tab" type="button" data-order-filter="completed" role="tab" aria-selected="false">Completed</button>
+                    <button class="dash-tab" type="button" data-order-filter="pending" role="tab" aria-selected="false">Pending</button>
+                  </div>
+                </div>
+                <div class="orders-table-wrap">
+                  <table class="orders-table" id="orders-table" aria-label="Orders table">
+                    <thead>
+                      <tr>
+                        <th>Order</th>
+                        <th>Client</th>
+                        <th>Amount</th>
+                        <th>Due</th>
+                        <th>Status</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="orders-tbody">
+                      <!-- Rendered by JS -->
+                    </tbody>
+                  </table>
+                </div>
+                <div class="dash-empty" id="orders-empty" hidden>
+                  <span class="dash-empty-icon" aria-hidden="true">📦</span>
+                  <p>No orders found.</p>
+                </div>
+              </section>
+
+              <!-- Earnings chart -->
+              <section class="dash-card" aria-labelledby="earnings-heading">
+                <div class="dash-card-header">
+                  <h2 id="earnings-heading">Earnings Overview</h2>
+                  <select class="earnings-period" id="earnings-period" aria-label="Select period">
+                    <option value="6m">Last 6 months</option>
+                    <option value="1y">This year</option>
+                    <option value="3m">Last 3 months</option>
+                  </select>
+                </div>
+                <div class="earnings-chart-wrap" aria-label="Earnings bar chart">
+                  <div class="earnings-chart" id="earnings-chart">
+                    <!-- Rendered by JS -->
+                  </div>
+                  <div class="earnings-chart-axis" id="earnings-axis">
+                    <!-- Rendered by JS -->
+                  </div>
+                </div>
+                <div class="earnings-summary">
+                  <div class="earnings-sum-item"><span>Total period</span><strong id="earnings-total">$0</strong></div>
+                  <div class="earnings-sum-item"><span>Avg/month</span><strong id="earnings-avg">$0</strong></div>
+                  <div class="earnings-sum-item"><span>Best month</span><strong id="earnings-best">$0</strong></div>
+                </div>
+              </section>
+            </div>
+
+            <!-- Right column -->
+            <div class="dash-col-side">
+
+              <!-- My Services -->
+              <section class="dash-card" aria-labelledby="my-services-heading">
+                <div class="dash-card-header">
+                  <h2 id="my-services-heading">My Services</h2>
+                  <button class="button button-primary" type="button" id="add-service-btn" style="min-height:28px;font-size:9.5px;padding:0 10px;">+ Add service</button>
+                </div>
+                <div class="my-services-list" id="my-services-list">
+                  <!-- Rendered by JS -->
+                </div>
+                <div class="dash-empty" id="my-services-empty" hidden>
+                  <span class="dash-empty-icon" aria-hidden="true">🛠</span>
+                  <p>No services created yet.</p>
+                </div>
+              </section>
+
+              <!-- Reviews -->
+              <section class="dash-card" aria-labelledby="reviews-heading">
+                <div class="dash-card-header">
+                  <h2 id="reviews-heading">Recent Reviews</h2>
+                  <span class="review-avg-badge" id="review-avg-badge">4.9 ★</span>
+                </div>
+                <div class="dash-reviews-list" id="dash-reviews-list">
+                  <!-- Rendered by JS -->
+                </div>
+                <div class="dash-empty" id="reviews-empty" hidden>
+                  <span class="dash-empty-icon" aria-hidden="true">💬</span>
+                  <p>No reviews yet.</p>
+                </div>
+              </section>
+
+              <!-- Messages snippet -->
+              <section class="dash-card" aria-labelledby="messages-heading">
+                <div class="dash-card-header">
+                  <h2 id="messages-heading">Messages</h2>
+                  <a href="messages.html" class="text-action">Open inbox ↗</a>
+                </div>
+                <div class="dash-messages-list" id="dash-messages-list">
+                  <!-- Rendered by JS -->
+                </div>
+                <div class="dash-empty" id="messages-empty" hidden>
+                  <span class="dash-empty-icon" aria-hidden="true">✉️</span>
+                  <p>No messages yet.</p>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <footer class="page-footer">
+            <span>© 2025 Workroom</span>
+            <span>Made for work that matters <span class="footer-star">✳</span></span>
+            <a href="mailto:help@workroom.example">Get support <span aria-hidden="true">↗</span></a>
+          </footer>
+        </div>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

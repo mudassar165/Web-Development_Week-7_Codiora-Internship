@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f4" />
+    <meta name="description" content="Workroom Messages — Stay connected with your clients and freelancers. Chat, track projects, and manage notifications all in one place." />
+    <title>Workroom — Messages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="messages.css" />
+    <script src="messages.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Workroom home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>workroom<span class="brand-period">.</span></span>
+        </a>
+        <div class="workspace-switcher">
+          <span class="workspace-avatar">S</span>
+          <span class="workspace-copy"><strong>Studio North</strong><small>Personal workspace</small></span>
+          <span class="switch-chevron" aria-hidden="true">⌄</span>
+        </div>
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="main-nav">
+          <a class="nav-link" href="index.html"><span class="nav-icon icon-grid" aria-hidden="true"></span>Overview</a>
+          <a class="nav-link" href="index.html#projects"><span class="nav-icon icon-folder" aria-hidden="true"></span>Projects<span class="nav-count">4</span></a>
+          <a class="nav-link active" href="messages.html" aria-current="page"><span class="nav-icon icon-chat" aria-hidden="true"></span>Messages<span class="unread-dot" id="sidebar-unread-dot"></span></a>
+          <a class="nav-link" href="index.html#delivery"><span class="nav-icon icon-receipt" aria-hidden="true"></span>Payments</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="help-card"><span class="help-spark" aria-hidden="true">✳</span><strong>Need a hand?</strong><p>Our team is here when you need us.</p><a href="mailto:help@workroom.example">Visit help center <span aria-hidden="true">↗</span></a></div>
+          <button class="profile-button" type="button" aria-label="Account settings"><span class="avatar avatar-you">JD</span><span class="profile-copy"><strong>Jamie Davis</strong><small>Freelancer</small></span><span class="profile-more" aria-hidden="true">•••</span></button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><a href="index.html">Workspace</a><span class="crumb-slash">/</span><strong>Messages</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box"><span class="search-icon" aria-hidden="true"></span><input id="global-message-search" type="search" placeholder="Search messages" aria-label="Search messages" /><kbd>⌘ K</kbd></label>
+            <button class="icon-button notification-button" type="button" id="notification-toggle" aria-label="Open notifications" aria-expanded="false" aria-haspopup="true"><span class="bell-icon" aria-hidden="true"></span><i id="notification-indicator"></i></button>
+            <span class="avatar avatar-you top-avatar" aria-label="Jamie Davis">JD</span>
+          </div>
+        </header>
+
+        <div class="page-wrap messages-page" id="messages-page">
+          <section class="page-heading">
+            <div><p class="eyebrow"><span class="eyebrow-line"></span>YOUR WORK, IN ONE PLACE</p><h1>Messages<span class="heading-period">.</span></h1><p class="page-subtitle">Good work starts with a conversation.</p></div>
+            <div class="heading-tools">
+              <button class="button button-quiet" type="button" id="compose-button" aria-label="Compose new message">
+                <span class="compose-icon" aria-hidden="true">✏</span> Compose
+              </button>
+              <button class="button button-primary" type="button" id="new-message"><span aria-hidden="true">＋</span> New message</button>
+            </div>
+          </section>
+
+          <section class="communication-workspace" aria-label="Messaging workspace">
+            <!-- Conversation list pane -->
+            <aside class="conversation-pane" aria-label="Conversations">
+              <div class="conversation-pane-heading">
+                <h2>Inbox</h2>
+                <span id="conversation-count">4 conversations</span>
+              </div>
+              <label class="conversation-search">
+                <span class="search-icon" aria-hidden="true"></span>
+                <input id="conversation-search" type="search" placeholder="Search conversations" aria-label="Search conversations" />
+              </label>
+              <div class="conversation-filters" role="group" aria-label="Filter conversations">
+                <button class="conversation-filter active" data-filter="all" type="button">All</button>
+                <button class="conversation-filter" data-filter="unread" type="button">Unread <span id="unread-count"></span></button>
+                <button class="conversation-filter" data-filter="active" type="button">Active</button>
+              </div>
+              <div class="conversation-list" id="conversation-list" role="list"></div>
+            </aside>
+
+            <!-- Chat window -->
+            <section class="conversation-chat" aria-label="Chat window" id="chat-window">
+              <header class="conversation-header" id="conversation-header">
+                <button class="chat-back" id="chat-back" type="button" aria-label="Back to inbox">‹</button>
+                <div class="chat-contact-wrap">
+                  <img class="contact-photo" id="contact-photo" src="" alt="" />
+                  <span class="contact-online-badge" id="contact-online-badge" aria-hidden="true"></span>
+                </div>
+                <div class="contact-heading">
+                  <strong id="contact-name"></strong>
+                  <span id="contact-status"></span>
+                </div>
+                <span class="conversation-header-spacer"></span>
+                <div class="header-actions">
+                  <button class="chat-action-btn" type="button" id="call-button" aria-label="Start a call" title="Call">
+                    <span aria-hidden="true">📞</span>
+                  </button>
+                  <button class="chat-details-toggle chat-action-btn" id="chat-details-toggle" type="button" aria-label="Show project details" title="Project details">
+                    <span aria-hidden="true">☷</span>
+                  </button>
+                  <button class="chat-more chat-action-btn" type="button" aria-label="More conversation options" aria-expanded="false" aria-haspopup="true" title="More options">
+                    <span aria-hidden="true">•••</span>
+                  </button>
+                </div>
+              </header>
+
+              <!-- Linked project banner -->
+              <div class="linked-project" id="linked-project" role="complementary" aria-label="Linked project"></div>
+
+              <!-- Messages area -->
+              <div class="message-list" id="message-list" role="log" aria-live="polite" aria-label="Messages"></div>
+
+              <!-- Typing indicator -->
+              <div class="chat-typing" id="chat-typing" aria-live="polite" role="status">
+                <span></span><span></span><span></span>
+                <small id="typing-contact"></small>
+              </div>
+
+              <!-- Message composer -->
+              <form class="message-composer" id="message-form" aria-label="Message composer">
+                <div class="composer-toolbar">
+                  <button class="composer-tool" type="button" id="attach-button" aria-label="Attach a file" title="Attach file">
+                    <span aria-hidden="true">📎</span>
+                  </button>
+                  <button class="composer-tool" type="button" id="image-button" aria-label="Send an image" title="Image">
+                    <span aria-hidden="true">🖼</span>
+                  </button>
+                </div>
+                <div class="composer-input-row">
+                  <textarea id="message-input" rows="1" placeholder="Write a message..." aria-label="Write a message" autocomplete="off"></textarea>
+                  <div class="composer-footer">
+                    <button class="emoji-button composer-tool" type="button" id="emoji-button" aria-label="Add emoji" title="Emoji">
+                      <span aria-hidden="true">☺</span>
+                    </button>
+                    <span class="composer-tip">Enter to send · Shift+Enter for new line</span>
+                    <button class="send-message" type="submit" id="send-button">
+                      Send <span aria-hidden="true">↗</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </section>
+
+            <!-- Project detail panel -->
+            <aside class="conversation-details" id="conversation-details" aria-label="Project details">
+              <div class="details-heading">
+                <h2>Project details</h2>
+                <button id="details-close" type="button" aria-label="Close project details">Close</button>
+              </div>
+              <article class="linked-project-card" id="linked-project-card"></article>
+              <section class="project-activity-summary">
+                <h3>Project activity</h3>
+                <div class="activity-person">
+                  <span class="activity-avatar" id="activity-avatar"></span>
+                  <p><strong id="activity-person-name"></strong><span id="activity-copy"></span></p>
+                </div>
+                <p class="project-note">Keep project notes, files, and milestones together in your project workspace.</p>
+                <a class="button button-quiet open-project" id="open-project" href="index.html">Open project <span aria-hidden="true">↗</span></a>
+                <a class="review-project-link" id="review-project-link" href="index.html?project=morrow#project-review" hidden>
+                  <span class="review-star-icon" aria-hidden="true">★</span> Leave a review <span aria-hidden="true">↗</span>
+                </a>
+              </section>
+            </aside>
+          </section>
+
+          <footer class="page-footer">
+            <span>© 2025 Workroom</span>
+            <span>Made for work that matters <span class="footer-star">✳</span></span>
+            <a href="mailto:help@workroom.example">Get support <span aria-hidden="true">↗</span></a>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <!-- Mobile bottom navigation -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+      <a class="mobile-nav-item" href="index.html" aria-label="Projects">
+        <span class="mobile-nav-icon icon-folder" aria-hidden="true"></span>
+        <span>Projects</span>
+      </a>
+      <a class="mobile-nav-item active" href="messages.html" aria-current="page" aria-label="Messages">
+        <span class="mobile-nav-icon icon-chat" aria-hidden="true"></span>
+        <span>Messages</span>
+        <span class="mobile-nav-badge" id="mobile-unread-badge"></span>
+      </a>
+      <button class="mobile-nav-item" type="button" id="mobile-notif-btn" aria-label="Notifications">
+        <span class="mobile-nav-icon bell-icon-nav" aria-hidden="true">🔔</span>
+        <span>Alerts</span>
+        <span class="mobile-nav-badge" id="mobile-notif-badge"></span>
+      </button>
+      <a class="mobile-nav-item" href="index.html" aria-label="Overview">
+        <span class="mobile-nav-icon icon-grid" aria-hidden="true"></span>
+        <span>Overview</span>
+      </a>
+    </nav>
+
+    <!-- Notification center popover -->
+    <section class="notification-popover" id="notification-popover" aria-label="Notifications" hidden role="dialog" aria-modal="false">
+      <div class="notification-heading">
+        <div>
+          <h2>Notifications</h2>
+          <span id="notification-summary"></span>
+        </div>
+        <div class="notification-heading-actions">
+          <button id="mark-all-read" type="button">Mark all read</button>
+          <button id="close-notifications" type="button" aria-label="Close notifications">✕</button>
+        </div>
+      </div>
+      <div class="notification-tabs" role="tablist" aria-label="Filter notifications">
+        <button class="notification-tab active" data-notif-filter="all" type="button" role="tab" aria-selected="true">All</button>
+        <button class="notification-tab" data-notif-filter="message" type="button" role="tab" aria-selected="false">Messages</button>
+        <button class="notification-tab" data-notif-filter="project" type="button" role="tab" aria-selected="false">Projects</button>
+        <button class="notification-tab" data-notif-filter="review" type="button" role="tab" aria-selected="false">Reviews</button>
+      </div>
+      <div class="notification-list" id="notification-list" role="list"></div>
+    </section>
+
+    <!-- Emoji picker -->
+    <div class="emoji-picker" id="emoji-picker" hidden role="dialog" aria-label="Choose an emoji" aria-modal="true">
+      <div class="emoji-grid" id="emoji-grid"></div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

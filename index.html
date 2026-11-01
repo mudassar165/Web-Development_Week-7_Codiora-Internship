@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f4" />
+    <title>Workroom — Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#projects" aria-label="Workroom home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>workroom<span class="brand-period">.</span></span>
+        </a>
+
+        <div class="workspace-switcher">
+          <span class="workspace-avatar">S</span>
+          <span class="workspace-copy"><strong>Studio North</strong><small>Personal workspace</small></span>
+          <span class="switch-chevron" aria-hidden="true">⌄</span>
+        </div>
+
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="main-nav">
+          <a class="nav-link" href="#projects"><span class="nav-icon icon-grid" aria-hidden="true"></span>Overview</a>
+          <a class="nav-link active" href="#projects" aria-current="page"><span class="nav-icon icon-folder" aria-hidden="true"></span>Projects<span class="nav-count">4</span></a>
+          <a class="nav-link" href="messages.html"><span class="nav-icon icon-chat" aria-hidden="true"></span>Messages<span class="unread-dot"></span></a>
+          <a class="nav-link" href="#delivery"><span class="nav-icon icon-receipt" aria-hidden="true"></span>Payments</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <span class="help-spark" aria-hidden="true">✳</span>
+            <strong>Need a hand?</strong>
+            <p>Our team is here when you need us.</p>
+            <a href="mailto:help@workroom.example">Visit help center <span aria-hidden="true">↗</span></a>
+          </div>
+          <button class="profile-button" type="button" aria-label="Account settings">
+            <span class="avatar avatar-you">JD</span>
+            <span class="profile-copy"><strong>Jamie Davis</strong><small>Freelancer</small></span>
+            <span class="profile-more" aria-hidden="true">•••</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-slash">/</span><strong>Projects</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box"><span class="search-icon" aria-hidden="true"></span><input id="project-search" type="search" placeholder="Search projects" aria-label="Search projects" /><kbd>⌘ K</kbd></label>
+            <a class="icon-button notification-button" href="messages.html?notifications=1" aria-label="Open notifications"><span class="bell-icon" aria-hidden="true"></span><i></i></a>
+            <span class="avatar avatar-you top-avatar" aria-label="Jamie Davis">JD</span>
+          </div>
+        </header>
+
+        <div class="page-wrap" id="projects">
+          <section class="page-heading">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span>YOUR WORK, IN ONE PLACE</p>
+              <h1>Projects<span class="heading-period">.</span></h1>
+              <p class="page-subtitle">Keep the good work moving.</p>
+            </div>
+            <div class="heading-tools">
+              <div class="role-switch" role="group" aria-label="Choose project perspective">
+                <button class="role-option active" type="button" data-role="freelancer" aria-pressed="true">Freelancer view</button>
+                <button class="role-option" type="button" data-role="client" aria-pressed="false">Client view</button>
+              </div>
+              <button class="button button-primary" id="new-project-button" type="button"><span aria-hidden="true">＋</span> New project</button>
+            </div>
+          </section>
+
+          <section class="stats-row" aria-label="Project summary">
+            <article class="stat-item"><span class="stat-label">Active projects</span><strong id="active-count">03</strong><span class="stat-note"><span class="stat-bullet green-bullet"></span>On track this week</span></article>
+            <article class="stat-item"><span class="stat-label">In progress</span><strong id="progress-count">02</strong><span class="stat-note">Across 2 clients</span></article>
+            <article class="stat-item"><span class="stat-label">Awaiting review</span><strong id="review-count">01</strong><span class="stat-note"><span class="stat-bullet orange-bullet"></span>Needs your attention</span></article>
+            <article class="stat-item stat-earnings"><span class="stat-label">Earned this month</span><strong>$4,850<span class="stat-currency">.00</span></strong><span class="stat-note"><span class="trend-up">↗ 12%</span> vs. last month</span></article>
+          </section>
+
+          <section class="project-area" aria-label="Your projects">
+            <div class="project-list-panel">
+              <div class="list-heading">
+                <div><h2>Your projects <span class="heading-count" id="visible-count">4</span></h2><p>All the details, minus the digging.</p></div>
+                <button class="filter-button" id="filter-button" type="button" aria-label="Filter projects"><span class="filter-icon" aria-hidden="true"></span><span>Filter</span><span class="filter-chevron" aria-hidden="true">⌄</span></button>
+              </div>
+              <div class="project-tabs" role="tablist" aria-label="Filter projects by status">
+                <button class="project-tab active" type="button" data-filter="all" role="tab" aria-selected="true">All <span>4</span></button>
+                <button class="project-tab" type="button" data-filter="active" role="tab" aria-selected="false">Active <span>3</span></button>
+                <button class="project-tab" type="button" data-filter="completed" role="tab" aria-selected="false">Completed <span>1</span></button>
+              </div>
+              <div class="project-list" id="project-list" role="list"></div>
+              <div class="empty-state" id="empty-state" hidden>No projects match that search.</div>
+              <button class="all-projects-link" type="button" id="show-all-projects">View all projects <span aria-hidden="true">↗</span></button>
+            </div>
+
+            <section class="detail-panel" id="project-detail" aria-live="polite" aria-label="Selected project details"></section>
+          </section>
+
+          <footer class="page-footer"><span>© 2025 Workroom</span><span>Made for work that matters <span class="footer-star">✳</span></span><a href="mailto:help@workroom.example">Get support <span aria-hidden="true">↗</span></a></footer>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="project-dialog" id="new-project-dialog" aria-labelledby="dialog-title">
+      <form method="dialog" id="new-project-form">
+        <div class="dialog-heading"><div><p class="eyebrow">A FRESH START</p><h2 id="dialog-title">Create a project</h2></div><button class="dialog-close" type="button" aria-label="Close dialog">×</button></div>
+        <label class="form-field">Project name<input name="name" required maxlength="60" placeholder="e.g. Brand identity refresh" /></label>
+        <div class="form-row"><label class="form-field">Client name<input name="client" required maxlength="40" placeholder="Client name" /></label><label class="form-field">Budget<input name="budget" required type="number" min="1" placeholder="1200" /></label></div>
+        <label class="form-field">Deadline<input name="deadline" required type="date" /></label>
+        <div class="dialog-actions"><button class="button button-quiet dialog-cancel" type="button">Cancel</button><button class="button button-primary" type="submit">Create project <span aria-hidden="true">↗</span></button></div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
